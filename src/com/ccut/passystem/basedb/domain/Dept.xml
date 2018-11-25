@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Dept_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Dept" id="result_Dept"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Dept" id="param_Dept"/>
+<insert id="insert_dept" parameterMap="param_Dept" >
+
+insert into dept   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="deptno != null and deptno != ''">
+deptno,
+ </if>
+<if test="dname != null and dname != ''">
+dname,
+ </if>
+<if test="db_source != null and db_source != ''">
+db_source,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="deptno != null and deptno != ''">
+#{deptno},
+ </if>
+<if test="dname != null and dname != ''">
+#{dname},
+ </if>
+<if test="db_source != null and db_source != ''">
+#{db_source},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_dept" parameterMap="param_Dept" >
+delete from dept where  id=#{id}
+</delete>
+<update id="update_dept" parameterMap="param_Dept" >update dept   
+
+<set>
+<if test="deptno != null and deptno != ''">
+deptno=#{deptno},
+ </if>
+<if test="dname != null and dname != ''">
+dname=#{dname},
+ </if>
+<if test="db_source != null and db_source != ''">
+db_source=#{db_source},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_dept" parameterMap="param_Dept"  resultMap="result_Dept">
+select deptno,dname,db_source
+ from dept where 1=1<if test="deptno != null and deptno != ''">
+ and deptno=#{deptno}
+ </if>
+<if test="dname != null and dname != ''">
+ and dname=#{dname}
+ </if>
+<if test="db_source != null and db_source != ''">
+ and db_source=#{db_source}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

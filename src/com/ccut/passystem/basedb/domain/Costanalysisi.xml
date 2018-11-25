@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Costanalysisi_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Costanalysisi" id="result_Costanalysisi"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Costanalysisi" id="param_Costanalysisi"/>
+<insert id="insert_costanalysisi" parameterMap="param_Costanalysisi" >
+
+insert into costanalysisi   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="productid != null and productid != ''">
+productid,
+ </if>
+<if test="price != null and price != ''">
+price,
+ </if>
+<if test="productnumber != null and productnumber != ''">
+productnumber,
+ </if>
+<if test="totalprice != null and totalprice != ''">
+totalprice,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="productid != null and productid != ''">
+#{productid},
+ </if>
+<if test="price != null and price != ''">
+#{price},
+ </if>
+<if test="productnumber != null and productnumber != ''">
+#{productnumber},
+ </if>
+<if test="totalprice != null and totalprice != ''">
+#{totalprice},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_costanalysisi" parameterMap="param_Costanalysisi" >
+delete from costanalysisi where  id=#{id}
+</delete>
+<update id="update_costanalysisi" parameterMap="param_Costanalysisi" >update costanalysisi   
+
+<set>
+<if test="productid != null and productid != ''">
+productid=#{productid},
+ </if>
+<if test="price != null and price != ''">
+price=#{price},
+ </if>
+<if test="productnumber != null and productnumber != ''">
+productnumber=#{productnumber},
+ </if>
+<if test="totalprice != null and totalprice != ''">
+totalprice=#{totalprice},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_costanalysisi" parameterMap="param_Costanalysisi"  resultMap="result_Costanalysisi">
+select ID,ProductID,Price,ProductNumber,TotalPrice
+ from costanalysisi where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="productid != null and productid != ''">
+ and productid=#{productid}
+ </if>
+<if test="price != null and price != ''">
+ and price=#{price}
+ </if>
+<if test="productnumber != null and productnumber != ''">
+ and productnumber=#{productnumber}
+ </if>
+<if test="totalprice != null and totalprice != ''">
+ and totalprice=#{totalprice}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="../../../css/productmanager/productmanager.css" />
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/jquery.form.js"></script>
+<script src="../../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../js/productmanager/productmanager.js"></script>
+</head>
+<body>
+	<div class="content">
+		<form id="addproduct" class="form-horizontal" action="../../../ProductManager_Controller/addProduct.action" method="GET">
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-3">
+					<input type="text" name="producename" class="form-control" id="inputEmail3"
+						placeholder="原材料名称">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">规格</label>
+				<div class="col-sm-3">
+					<input type="text" name="specifications" class="form-control" id="inputPassword3"
+						placeholder="规格">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">型号</label>
+				<div class="col-sm-3">
+					<input type="text" name="model" class="form-control" id="inputPassword3"
+						placeholder="原材料型号">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">价格</label>
+				<div class="col-sm-3">
+					<input type="text" name="price" class="form-control" id="inputPassword3"
+						placeholder="价格单位：元">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">供应商</label>
+				<div class="col-sm-3">
+					<input type="text" name="suppliername" class="form-control" id="inputPassword3"
+						placeholder="供应商名称">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				    <button type="reset" class="btn btn-default">重置</button>
+					<button type="submit" class="btn btn-info">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

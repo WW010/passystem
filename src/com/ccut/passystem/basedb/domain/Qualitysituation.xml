@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Qualitysituation_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Qualitysituation" id="result_Qualitysituation"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Qualitysituation" id="param_Qualitysituation"/>
+<insert id="insert_qualitysituation" parameterMap="param_Qualitysituation" >
+
+insert into qualitysituation   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+arrivedata,
+ </if>
+<if test="qualityname != null and qualityname != ''">
+qualityname,
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+qualityevaluation,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+#{arrivedata},
+ </if>
+<if test="qualityname != null and qualityname != ''">
+#{qualityname},
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+#{qualityevaluation},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_qualitysituation" parameterMap="param_Qualitysituation" >
+delete from qualitysituation where  id=#{id}
+</delete>
+<update id="update_qualitysituation" parameterMap="param_Qualitysituation" >update qualitysituation   
+
+<set>
+<if test="arrivedata != null and arrivedata != ''">
+arrivedata=#{arrivedata},
+ </if>
+<if test="qualityname != null and qualityname != ''">
+qualityname=#{qualityname},
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+qualityevaluation=#{qualityevaluation},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_qualitysituation" parameterMap="param_Qualitysituation"  resultMap="result_Qualitysituation">
+select ID,ArriveData,QualityName,QualityEvaluation
+ from qualitysituation where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+ and arrivedata=#{arrivedata}
+ </if>
+<if test="qualityname != null and qualityname != ''">
+ and qualityname=#{qualityname}
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+ and qualityevaluation=#{qualityevaluation}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

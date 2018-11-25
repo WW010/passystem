@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Subproduce_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Subproduce" id="result_Subproduce"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Subproduce" id="param_Subproduce"/>
+<insert id="insert_subproduce" parameterMap="param_Subproduce" >
+
+insert into subproduce   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="suppliername != null and suppliername != ''">
+suppliername,
+ </if>
+<if test="qualityname != null and qualityname != ''">
+qualityname,
+ </if>
+<if test="deal != null and deal != ''">
+deal,
+ </if>
+<if test="backdata != null and backdata != ''">
+backdata,
+ </if>
+<if test="dealdata != null and dealdata != ''">
+dealdata,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="suppliername != null and suppliername != ''">
+#{suppliername},
+ </if>
+<if test="qualityname != null and qualityname != ''">
+#{qualityname},
+ </if>
+<if test="deal != null and deal != ''">
+#{deal},
+ </if>
+<if test="backdata != null and backdata != ''">
+#{backdata},
+ </if>
+<if test="dealdata != null and dealdata != ''">
+#{dealdata},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_subproduce" parameterMap="param_Subproduce" >
+delete from subproduce where  id=#{id}
+</delete>
+<update id="update_subproduce" parameterMap="param_Subproduce" >update subproduce   
+
+<set>
+<if test="suppliername != null and suppliername != ''">
+suppliername=#{suppliername},
+ </if>
+<if test="qualityname != null and qualityname != ''">
+qualityname=#{qualityname},
+ </if>
+<if test="deal != null and deal != ''">
+deal=#{deal},
+ </if>
+<if test="backdata != null and backdata != ''">
+backdata=#{backdata},
+ </if>
+<if test="dealdata != null and dealdata != ''">
+dealdata=#{dealdata},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_subproduce" parameterMap="param_Subproduce"  resultMap="result_Subproduce">
+select ID,SupplierName,QualityName,Deal,BackData,DealData
+ from subproduce where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="suppliername != null and suppliername != ''">
+ and suppliername=#{suppliername}
+ </if>
+<if test="qualityname != null and qualityname != ''">
+ and qualityname=#{qualityname}
+ </if>
+<if test="deal != null and deal != ''">
+ and deal=#{deal}
+ </if>
+<if test="backdata != null and backdata != ''">
+ and backdata=#{backdata}
+ </if>
+<if test="dealdata != null and dealdata != ''">
+ and dealdata=#{dealdata}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

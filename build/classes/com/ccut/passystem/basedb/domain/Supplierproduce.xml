@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Supplierproduce_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Supplierproduce" id="result_Supplierproduce"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Supplierproduce" id="param_Supplierproduce"/>
+<insert id="insert_supplierproduce" parameterMap="param_Supplierproduce" >
+
+insert into supplierproduce   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="suppliername != null and suppliername != ''">
+suppliername,
+ </if>
+<if test="producename != null and producename != ''">
+producename,
+ </if>
+<if test="model != null and model != ''">
+model,
+ </if>
+<if test="specifications != null and specifications != ''">
+specifications,
+ </if>
+<if test="price != null and price != ''">
+price,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="suppliername != null and suppliername != ''">
+#{suppliername},
+ </if>
+<if test="producename != null and producename != ''">
+#{producename},
+ </if>
+<if test="model != null and model != ''">
+#{model},
+ </if>
+<if test="specifications != null and specifications != ''">
+#{specifications},
+ </if>
+<if test="price != null and price != ''">
+#{price},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_supplierproduce" parameterMap="param_Supplierproduce" >
+delete from supplierproduce where  id=#{id}
+</delete>
+<update id="update_supplierproduce" parameterMap="param_Supplierproduce" >update supplierproduce   
+
+<set>
+<if test="suppliername != null and suppliername != ''">
+suppliername=#{suppliername},
+ </if>
+<if test="producename != null and producename != ''">
+producename=#{producename},
+ </if>
+<if test="model != null and model != ''">
+model=#{model},
+ </if>
+<if test="specifications != null and specifications != ''">
+specifications=#{specifications},
+ </if>
+<if test="price != null and price != ''">
+price=#{price},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_supplierproduce" parameterMap="param_Supplierproduce"  resultMap="result_Supplierproduce">
+select ID,SupplierName,ProduceName,Model,Specifications,Price
+ from supplierproduce where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="suppliername != null and suppliername != ''">
+ and suppliername=#{suppliername}
+ </if>
+<if test="producename != null and producename != ''">
+ and producename=#{producename}
+ </if>
+<if test="model != null and model != ''">
+ and model=#{model}
+ </if>
+<if test="specifications != null and specifications != ''">
+ and specifications=#{specifications}
+ </if>
+<if test="price != null and price != ''">
+ and price=#{price}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

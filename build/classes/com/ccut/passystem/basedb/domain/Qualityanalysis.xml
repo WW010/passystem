@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Qualityanalysis_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Qualityanalysis" id="result_Qualityanalysis"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Qualityanalysis" id="param_Qualityanalysis"/>
+<insert id="insert_qualityanalysis" parameterMap="param_Qualityanalysis" >
+
+insert into qualityanalysis   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+qualityevaluation,
+ </if>
+<if test="subproducenumber != null and subproducenumber != ''">
+subproducenumber,
+ </if>
+<if test="supply != null and supply != ''">
+supply,
+ </if>
+<if test="arrivenumber != null and arrivenumber != ''">
+arrivenumber,
+ </if>
+<if test="performanceraito != null and performanceraito != ''">
+performanceraito,
+ </if>
+<if test="grade != null and grade != ''">
+grade,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+#{qualityevaluation},
+ </if>
+<if test="subproducenumber != null and subproducenumber != ''">
+#{subproducenumber},
+ </if>
+<if test="supply != null and supply != ''">
+#{supply},
+ </if>
+<if test="arrivenumber != null and arrivenumber != ''">
+#{arrivenumber},
+ </if>
+<if test="performanceraito != null and performanceraito != ''">
+#{performanceraito},
+ </if>
+<if test="grade != null and grade != ''">
+#{grade},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_qualityanalysis" parameterMap="param_Qualityanalysis" >
+delete from qualityanalysis where  id=#{id}
+</delete>
+<update id="update_qualityanalysis" parameterMap="param_Qualityanalysis" >update qualityanalysis   
+
+<set>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+qualityevaluation=#{qualityevaluation},
+ </if>
+<if test="subproducenumber != null and subproducenumber != ''">
+subproducenumber=#{subproducenumber},
+ </if>
+<if test="supply != null and supply != ''">
+supply=#{supply},
+ </if>
+<if test="arrivenumber != null and arrivenumber != ''">
+arrivenumber=#{arrivenumber},
+ </if>
+<if test="performanceraito != null and performanceraito != ''">
+performanceraito=#{performanceraito},
+ </if>
+<if test="grade != null and grade != ''">
+grade=#{grade},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_qualityanalysis" parameterMap="param_Qualityanalysis"  resultMap="result_Qualityanalysis">
+select ID,QualityEvaluation,SubProduceNumber,Supply,ArriveNumber,PerformanceRaito,Grade
+ from qualityanalysis where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="qualityevaluation != null and qualityevaluation != ''">
+ and qualityevaluation=#{qualityevaluation}
+ </if>
+<if test="subproducenumber != null and subproducenumber != ''">
+ and subproducenumber=#{subproducenumber}
+ </if>
+<if test="supply != null and supply != ''">
+ and supply=#{supply}
+ </if>
+<if test="arrivenumber != null and arrivenumber != ''">
+ and arrivenumber=#{arrivenumber}
+ </if>
+<if test="performanceraito != null and performanceraito != ''">
+ and performanceraito=#{performanceraito}
+ </if>
+<if test="grade != null and grade != ''">
+ and grade=#{grade}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

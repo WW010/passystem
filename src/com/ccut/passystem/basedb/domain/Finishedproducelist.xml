@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Finishedproducelist_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Finishedproducelist" id="result_Finishedproducelist"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Finishedproducelist" id="param_Finishedproducelist"/>
+<insert id="insert_finishedproducelist" parameterMap="param_Finishedproducelist" >
+
+insert into finishedproducelist   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="finshedproducename != null and finshedproducename != ''">
+finshedproducename,
+ </if>
+<if test="needproduce1 != null and needproduce1 != ''">
+needproduce1,
+ </if>
+<if test="needproduce2 != null and needproduce2 != ''">
+needproduce2,
+ </if>
+<if test="needproduce3 != null and needproduce3 != ''">
+needproduce3,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="finshedproducename != null and finshedproducename != ''">
+#{finshedproducename},
+ </if>
+<if test="needproduce1 != null and needproduce1 != ''">
+#{needproduce1},
+ </if>
+<if test="needproduce2 != null and needproduce2 != ''">
+#{needproduce2},
+ </if>
+<if test="needproduce3 != null and needproduce3 != ''">
+#{needproduce3},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_finishedproducelist" parameterMap="param_Finishedproducelist" >
+delete from finishedproducelist where  id=#{id}
+</delete>
+<update id="update_finishedproducelist" parameterMap="param_Finishedproducelist" >update finishedproducelist   
+
+<set>
+<if test="finshedproducename != null and finshedproducename != ''">
+finshedproducename=#{finshedproducename},
+ </if>
+<if test="needproduce1 != null and needproduce1 != ''">
+needproduce1=#{needproduce1},
+ </if>
+<if test="needproduce2 != null and needproduce2 != ''">
+needproduce2=#{needproduce2},
+ </if>
+<if test="needproduce3 != null and needproduce3 != ''">
+needproduce3=#{needproduce3},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_finishedproducelist" parameterMap="param_Finishedproducelist"  resultMap="result_Finishedproducelist">
+select ID,FinshedProduceName,NeedProduce1,NeedProduce2,NeedProduce3
+ from finishedproducelist where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="finshedproducename != null and finshedproducename != ''">
+ and finshedproducename=#{finshedproducename}
+ </if>
+<if test="needproduce1 != null and needproduce1 != ''">
+ and needproduce1=#{needproduce1}
+ </if>
+<if test="needproduce2 != null and needproduce2 != ''">
+ and needproduce2=#{needproduce2}
+ </if>
+<if test="needproduce3 != null and needproduce3 != ''">
+ and needproduce3=#{needproduce3}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

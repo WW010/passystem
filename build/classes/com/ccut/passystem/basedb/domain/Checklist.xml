@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Checklist_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Checklist" id="result_Checklist"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Checklist" id="param_Checklist"/>
+<insert id="insert_checklist" parameterMap="param_Checklist" >
+
+insert into checklist   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+arrivedata,
+ </if>
+<if test="producename != null and producename != ''">
+producename,
+ </if>
+<if test="number != null and number != ''">
+number,
+ </if>
+<if test="result != null and result != ''">
+result,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+#{arrivedata},
+ </if>
+<if test="producename != null and producename != ''">
+#{producename},
+ </if>
+<if test="number != null and number != ''">
+#{number},
+ </if>
+<if test="result != null and result != ''">
+#{result},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_checklist" parameterMap="param_Checklist" >
+delete from checklist where  id=#{id}
+</delete>
+<update id="update_checklist" parameterMap="param_Checklist" >update checklist   
+
+<set>
+<if test="arrivedata != null and arrivedata != ''">
+arrivedata=#{arrivedata},
+ </if>
+<if test="producename != null and producename != ''">
+producename=#{producename},
+ </if>
+<if test="number != null and number != ''">
+number=#{number},
+ </if>
+<if test="result != null and result != ''">
+result=#{result},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_checklist" parameterMap="param_Checklist"  resultMap="result_Checklist">
+select ID,ArriveData,ProduceName,Number,Result
+ from checklist where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="arrivedata != null and arrivedata != ''">
+ and arrivedata=#{arrivedata}
+ </if>
+<if test="producename != null and producename != ''">
+ and producename=#{producename}
+ </if>
+<if test="number != null and number != ''">
+ and number=#{number}
+ </if>
+<if test="result != null and result != ''">
+ and result=#{result}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

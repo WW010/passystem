@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Produceevaluation_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Produceevaluation" id="result_Produceevaluation"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Produceevaluation" id="param_Produceevaluation"/>
+<insert id="insert_produceevaluation" parameterMap="param_Produceevaluation" >
+
+insert into produceevaluation   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="producename != null and producename != ''">
+producename,
+ </if>
+<if test="evaluation != null and evaluation != ''">
+evaluation,
+ </if>
+<if test="producereserve != null and producereserve != ''">
+producereserve,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="producename != null and producename != ''">
+#{producename},
+ </if>
+<if test="evaluation != null and evaluation != ''">
+#{evaluation},
+ </if>
+<if test="producereserve != null and producereserve != ''">
+#{producereserve},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_produceevaluation" parameterMap="param_Produceevaluation" >
+delete from produceevaluation where  id=#{id}
+</delete>
+<update id="update_produceevaluation" parameterMap="param_Produceevaluation" >update produceevaluation   
+
+<set>
+<if test="producename != null and producename != ''">
+producename=#{producename},
+ </if>
+<if test="evaluation != null and evaluation != ''">
+evaluation=#{evaluation},
+ </if>
+<if test="producereserve != null and producereserve != ''">
+producereserve=#{producereserve},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_produceevaluation" parameterMap="param_Produceevaluation"  resultMap="result_Produceevaluation">
+select ID,ProduceName,Evaluation,ProduceReserve
+ from produceevaluation where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="producename != null and producename != ''">
+ and producename=#{producename}
+ </if>
+<if test="evaluation != null and evaluation != ''">
+ and evaluation=#{evaluation}
+ </if>
+<if test="producereserve != null and producereserve != ''">
+ and producereserve=#{producereserve}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

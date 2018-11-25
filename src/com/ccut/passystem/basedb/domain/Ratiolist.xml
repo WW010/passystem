@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Ratiolist_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Ratiolist" id="result_Ratiolist"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Ratiolist" id="param_Ratiolist"/>
+<insert id="insert_ratiolist" parameterMap="param_Ratiolist" >
+
+insert into ratiolist   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="finishedproduceratio != null and finishedproduceratio != ''">
+finishedproduceratio,
+ </if>
+<if test="produce1 != null and produce1 != ''">
+produce1,
+ </if>
+<if test="produce2 != null and produce2 != ''">
+produce2,
+ </if>
+<if test="produce3 != null and produce3 != ''">
+produce3,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="finishedproduceratio != null and finishedproduceratio != ''">
+#{finishedproduceratio},
+ </if>
+<if test="produce1 != null and produce1 != ''">
+#{produce1},
+ </if>
+<if test="produce2 != null and produce2 != ''">
+#{produce2},
+ </if>
+<if test="produce3 != null and produce3 != ''">
+#{produce3},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_ratiolist" parameterMap="param_Ratiolist" >
+delete from ratiolist where  id=#{id}
+</delete>
+<update id="update_ratiolist" parameterMap="param_Ratiolist" >update ratiolist   
+
+<set>
+<if test="finishedproduceratio != null and finishedproduceratio != ''">
+finishedproduceratio=#{finishedproduceratio},
+ </if>
+<if test="produce1 != null and produce1 != ''">
+produce1=#{produce1},
+ </if>
+<if test="produce2 != null and produce2 != ''">
+produce2=#{produce2},
+ </if>
+<if test="produce3 != null and produce3 != ''">
+produce3=#{produce3},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_ratiolist" parameterMap="param_Ratiolist"  resultMap="result_Ratiolist">
+select ID,FinishedProduceRatio,Produce1,Produce2,Produce3
+ from ratiolist where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="finishedproduceratio != null and finishedproduceratio != ''">
+ and finishedproduceratio=#{finishedproduceratio}
+ </if>
+<if test="produce1 != null and produce1 != ''">
+ and produce1=#{produce1}
+ </if>
+<if test="produce2 != null and produce2 != ''">
+ and produce2=#{produce2}
+ </if>
+<if test="produce3 != null and produce3 != ''">
+ and produce3=#{produce3}
+ </if>
+</select>
+
+
+
+
+
+</mapper>
