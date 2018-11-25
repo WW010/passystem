@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Supplierarchivers_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Supplierarchivers" id="result_Supplierarchivers"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Supplierarchivers" id="param_Supplierarchivers"/>
+<insert id="insert_supplierarchivers" parameterMap="param_Supplierarchivers" >
+
+insert into supplierarchivers   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="suppliername != null and suppliername != ''">
+suppliername,
+ </if>
+<if test="contact != null and contact != ''">
+contact,
+ </if>
+<if test="header != null and header != ''">
+header,
+ </if>
+<if test="contacttel != null and contacttel != ''">
+contacttel,
+ </if>
+<if test="postcode != null and postcode != ''">
+postcode,
+ </if>
+<if test="addr != null and addr != ''">
+addr,
+ </if>
+<if test="type != null and type != ''">
+type,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="suppliername != null and suppliername != ''">
+#{suppliername},
+ </if>
+<if test="contact != null and contact != ''">
+#{contact},
+ </if>
+<if test="header != null and header != ''">
+#{header},
+ </if>
+<if test="contacttel != null and contacttel != ''">
+#{contacttel},
+ </if>
+<if test="postcode != null and postcode != ''">
+#{postcode},
+ </if>
+<if test="addr != null and addr != ''">
+#{addr},
+ </if>
+<if test="type != null and type != ''">
+#{type},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_supplierarchivers" parameterMap="param_Supplierarchivers" >
+delete from supplierarchivers where  id=#{id}
+</delete>
+<update id="update_supplierarchivers" parameterMap="param_Supplierarchivers" >update supplierarchivers   
+
+<set>
+<if test="suppliername != null and suppliername != ''">
+suppliername=#{suppliername},
+ </if>
+<if test="contact != null and contact != ''">
+contact=#{contact},
+ </if>
+<if test="header != null and header != ''">
+header=#{header},
+ </if>
+<if test="contacttel != null and contacttel != ''">
+contacttel=#{contacttel},
+ </if>
+<if test="postcode != null and postcode != ''">
+postcode=#{postcode},
+ </if>
+<if test="addr != null and addr != ''">
+addr=#{addr},
+ </if>
+<if test="type != null and type != ''">
+type=#{type},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_supplierarchivers" parameterMap="param_Supplierarchivers"  resultMap="result_Supplierarchivers">
+select ID,SupplierName,Contact,Header,ContactTel,PostCode,Addr,Type
+ from supplierarchivers where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="suppliername != null and suppliername != ''">
+ and suppliername=#{suppliername}
+ </if>
+<if test="contact != null and contact != ''">
+ and contact=#{contact}
+ </if>
+<if test="header != null and header != ''">
+ and header=#{header}
+ </if>
+<if test="contacttel != null and contacttel != ''">
+ and contacttel=#{contacttel}
+ </if>
+<if test="postcode != null and postcode != ''">
+ and postcode=#{postcode}
+ </if>
+<if test="addr != null and addr != ''">
+ and addr=#{addr}
+ </if>
+<if test="type != null and type != ''">
+ and type=#{type}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

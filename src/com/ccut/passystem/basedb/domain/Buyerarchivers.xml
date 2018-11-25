@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Buyerarchivers_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Buyerarchivers" id="result_Buyerarchivers"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Buyerarchivers" id="param_Buyerarchivers"/>
+<insert id="insert_buyerarchivers" parameterMap="param_Buyerarchivers" >
+
+insert into buyerarchivers   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="buyername != null and buyername != ''">
+buyername,
+ </if>
+<if test="buyertel != null and buyertel != ''">
+buyertel,
+ </if>
+<if test="buyeraddr != null and buyeraddr != ''">
+buyeraddr,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="buyername != null and buyername != ''">
+#{buyername},
+ </if>
+<if test="buyertel != null and buyertel != ''">
+#{buyertel},
+ </if>
+<if test="buyeraddr != null and buyeraddr != ''">
+#{buyeraddr},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_buyerarchivers" parameterMap="param_Buyerarchivers" >
+delete from buyerarchivers where  id=#{id}
+</delete>
+<update id="update_buyerarchivers" parameterMap="param_Buyerarchivers" >update buyerarchivers   
+
+<set>
+<if test="buyername != null and buyername != ''">
+buyername=#{buyername},
+ </if>
+<if test="buyertel != null and buyertel != ''">
+buyertel=#{buyertel},
+ </if>
+<if test="buyeraddr != null and buyeraddr != ''">
+buyeraddr=#{buyeraddr},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_buyerarchivers" parameterMap="param_Buyerarchivers"  resultMap="result_Buyerarchivers">
+select ID,BuyerName,BuyerTel,BuyerAddr
+ from buyerarchivers where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="buyername != null and buyername != ''">
+ and buyername=#{buyername}
+ </if>
+<if test="buyertel != null and buyertel != ''">
+ and buyertel=#{buyertel}
+ </if>
+<if test="buyeraddr != null and buyeraddr != ''">
+ and buyeraddr=#{buyeraddr}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

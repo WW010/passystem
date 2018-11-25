@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Costdepartmen_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Costdepartmen" id="result_Costdepartmen"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Costdepartmen" id="param_Costdepartmen"/>
+<insert id="insert_costdepartmen" parameterMap="param_Costdepartmen" >
+
+insert into costdepartmen   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="departmenname != null and departmenname != ''">
+departmenname,
+ </if>
+<if test="costamount != null and costamount != ''">
+costamount,
+ </if>
+<if test="costdata != null and costdata != ''">
+costdata,
+ </if>
+<if test="recorder != null and recorder != ''">
+recorder,
+ </if>
+<if test="recorddata != null and recorddata != ''">
+recorddata,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="departmenname != null and departmenname != ''">
+#{departmenname},
+ </if>
+<if test="costamount != null and costamount != ''">
+#{costamount},
+ </if>
+<if test="costdata != null and costdata != ''">
+#{costdata},
+ </if>
+<if test="recorder != null and recorder != ''">
+#{recorder},
+ </if>
+<if test="recorddata != null and recorddata != ''">
+#{recorddata},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_costdepartmen" parameterMap="param_Costdepartmen" >
+delete from costdepartmen where  id=#{id}
+</delete>
+<update id="update_costdepartmen" parameterMap="param_Costdepartmen" >update costdepartmen   
+
+<set>
+<if test="departmenname != null and departmenname != ''">
+departmenname=#{departmenname},
+ </if>
+<if test="costamount != null and costamount != ''">
+costamount=#{costamount},
+ </if>
+<if test="costdata != null and costdata != ''">
+costdata=#{costdata},
+ </if>
+<if test="recorder != null and recorder != ''">
+recorder=#{recorder},
+ </if>
+<if test="recorddata != null and recorddata != ''">
+recorddata=#{recorddata},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_costdepartmen" parameterMap="param_Costdepartmen"  resultMap="result_Costdepartmen">
+select ID,DepartmenName,CostAmount,CostData,Recorder,RecordData
+ from costdepartmen where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="departmenname != null and departmenname != ''">
+ and departmenname=#{departmenname}
+ </if>
+<if test="costamount != null and costamount != ''">
+ and costamount=#{costamount}
+ </if>
+<if test="costdata != null and costdata != ''">
+ and costdata=#{costdata}
+ </if>
+<if test="recorder != null and recorder != ''">
+ and recorder=#{recorder}
+ </if>
+<if test="recorddata != null and recorddata != ''">
+ and recorddata=#{recorddata}
+ </if>
+</select>
+
+
+
+
+
+</mapper>

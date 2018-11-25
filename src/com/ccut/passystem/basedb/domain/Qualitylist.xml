@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccut.passystem.basedb.dao.Qualitylist_Dao_Iface" >
+<resultMap type="com.ccut.passystem.basedb.domain.Qualitylist" id="result_Qualitylist"/>
+<parameterMap type="com.ccut.passystem.basedb.domain.Qualitylist" id="param_Qualitylist"/>
+<insert id="insert_qualitylist" parameterMap="param_Qualitylist" >
+
+insert into qualitylist   
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+id,
+ </if>
+<if test="qualityname != null and qualityname != ''">
+qualityname,
+ </if>
+<if test="reason != null and reason != ''">
+reason,
+ </if>
+<if test="measures != null and measures != ''">
+measures,
+ </if>
+<if test="performdata != null and performdata != ''">
+performdata,
+ </if>
+<if test="senddata != null and senddata != ''">
+senddata,
+ </if>
+<if test="receverdata != null and receverdata != ''">
+receverdata,
+ </if>
+<if test="feedback != null and feedback != ''">
+feedback,
+ </if>
+<if test="signature != null and signature != ''">
+signature,
+ </if>
+</trim>
+VALUES
+<trim prefix="(" suffix=")" suffixOverrides=",">
+<if test="id != null and id != ''">
+#{id},
+ </if>
+<if test="qualityname != null and qualityname != ''">
+#{qualityname},
+ </if>
+<if test="reason != null and reason != ''">
+#{reason},
+ </if>
+<if test="measures != null and measures != ''">
+#{measures},
+ </if>
+<if test="performdata != null and performdata != ''">
+#{performdata},
+ </if>
+<if test="senddata != null and senddata != ''">
+#{senddata},
+ </if>
+<if test="receverdata != null and receverdata != ''">
+#{receverdata},
+ </if>
+<if test="feedback != null and feedback != ''">
+#{feedback},
+ </if>
+<if test="signature != null and signature != ''">
+#{signature},
+ </if>
+
+</trim>
+</insert>
+
+
+<delete id="delete_qualitylist" parameterMap="param_Qualitylist" >
+delete from qualitylist where  id=#{id}
+</delete>
+<update id="update_qualitylist" parameterMap="param_Qualitylist" >update qualitylist   
+
+<set>
+<if test="qualityname != null and qualityname != ''">
+qualityname=#{qualityname},
+ </if>
+<if test="reason != null and reason != ''">
+reason=#{reason},
+ </if>
+<if test="measures != null and measures != ''">
+measures=#{measures},
+ </if>
+<if test="performdata != null and performdata != ''">
+performdata=#{performdata},
+ </if>
+<if test="senddata != null and senddata != ''">
+senddata=#{senddata},
+ </if>
+<if test="receverdata != null and receverdata != ''">
+receverdata=#{receverdata},
+ </if>
+<if test="feedback != null and feedback != ''">
+feedback=#{feedback},
+ </if>
+<if test="signature != null and signature != ''">
+signature=#{signature},
+ </if>
+
+</set>
+ where id=#{id}
+</update>
+<select id="queryAll_qualitylist" parameterMap="param_Qualitylist"  resultMap="result_Qualitylist">
+select ID,QualityName,Reason,Measures,PerformData,SendData,ReceverData,Feedback,Signature
+ from qualitylist where 1=1<if test="id != null and id != ''">
+ and id=#{id}
+ </if>
+<if test="qualityname != null and qualityname != ''">
+ and qualityname=#{qualityname}
+ </if>
+<if test="reason != null and reason != ''">
+ and reason=#{reason}
+ </if>
+<if test="measures != null and measures != ''">
+ and measures=#{measures}
+ </if>
+<if test="performdata != null and performdata != ''">
+ and performdata=#{performdata}
+ </if>
+<if test="senddata != null and senddata != ''">
+ and senddata=#{senddata}
+ </if>
+<if test="receverdata != null and receverdata != ''">
+ and receverdata=#{receverdata}
+ </if>
+<if test="feedback != null and feedback != ''">
+ and feedback=#{feedback}
+ </if>
+<if test="signature != null and signature != ''">
+ and signature=#{signature}
+ </if>
+</select>
+
+
+
+
+
+</mapper>
